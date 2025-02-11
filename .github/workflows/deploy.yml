@@ -19,10 +19,10 @@ jobs:
           node-version: 18  # Adjust based on your Angular version
 
       - name: Install Dependencies
-        run: npm ci  # Ensures a clean installation of dependencies
+        run: npm install  # Ensures a clean installation of dependencies
 
       - name: Build Angular App
-        run: npm run build -- --configuration=production  # Production build
+        run: npm run build # Production build
 
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
