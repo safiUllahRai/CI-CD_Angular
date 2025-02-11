@@ -1,0 +1,49 @@
+<mat-progress-bar *ngIf= "!stopLoader"  mode="indeterminate"></mat-progress-bar>
+<div fxLayout="column" style="padding: 1em;">
+  <div  fxLayout="row" fxLayoutAlign="center">
+              <h6>Total Consumed Leaves</h6>&nbsp;
+                 {{summm}} / 14<br>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="center">
+    <mat-form-field appearance="fill">
+      <mat-label>Filter</mat-label>
+      <mat-select [(ngModel)]="selectedFilter" (ngModelChange)="onFilterChange()">
+        <mat-option value="all">All</mat-option>
+        <mat-option value="withdrawn">Withdrawn</mat-option>
+        <mat-option value="rejected">Rejected</mat-option>
+        <mat-option value="approved">Approved</mat-option>
+        <mat-option value="pending">Pending</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+        <mat-card *ngFor="let r of allRequests" style="margin-top: 1rem;">
+            <div class="row align-items-center justify-content-between">
+              <div>
+                <h6 class="text-danger" >
+                  {{ getApprovalStatusText(r.approvalStatus) }}
+                </h6>
+                  <div>
+                    <b>Request Type:</b>&nbsp;  {{ r.requestType == 1 ? "Leave Request" : "Remote Request" }}<br>
+                    <b>Start Date:</b>&nbsp;{{r.startDate | date: "dd/MM/yyyy"}} <br>
+                    <b>End Date:</b>&nbsp;{{ r.endDate | date: "dd/MM/yyyy" }}<br>
+                    <b>Submission Date: </b>&nbsp; {{r.submissionDate | date: "dd/MM/yyyy"}} <br>
+                    <b>Reasons:</b>&nbsp;{{r.reason}}
+                  </div>
+              </div>
+              <div class="col-auto text-primary" style="margin-top: 1rem;">
+                <h6 class="mb-0">{{ r.totalLeaves }} <small>day/s</small></h6>
+              </div>
+            </div>
+            <div class="row justify-content-end" *ngIf="r.approvalStatus == 1">
+              <button
+                class="btn btn-outline-danger mr-1"
+                (click)="withdrawRequest(r.id)"
+                [disabled]="r.cannotWithdraw"
+              >
+                Withdraw
+              </button>
+            </div>
+
+        </mat-card>
+        </div>

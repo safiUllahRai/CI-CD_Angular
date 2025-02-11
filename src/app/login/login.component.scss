@@ -1,0 +1,168 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+.highlight {
+    outline: none;
+    box-shadow: none;
+    border-color: initial;
+  }
+  
+
+  .spinner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+  
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ccc;
+    border-top-color: #000;
+    border-radius: 50%;
+    animation: spinner-rotate 1s infinite linear;
+  }
+  
+  @keyframes spinner-rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .flex-right {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .tile-title {
+    font-size: 16px; /* Slightly larger text */
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+  .login-container {
+    display: flex;
+    //height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    //overflow: hidden;
+    padding: 20px; // Add container padding
+    width: 100vw; // Ensure full width
+    margin: 0;
+    overflow: hidden; // Prevent any scrolling
+  }
+  
+  .login-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white; /* Ensure card has white background */
+  margin: 0; /* Add safety margin */
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+  }
+  
+  .login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .app-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #14344C;
+    margin-bottom: 0.5rem;
+  }
+  
+  .app-subtitle {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  
+  .microsoft-login-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #14344C;
+    color: white !important;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: darken(#14344C, 5%);
+      transform: translateY(-1px);
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+  }
+  
+  .microsoft-logo {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+  }
+  
+  .login-footer {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
+  }
+  
+  .support-text {
+    color: #6c757d;
+    font-size: 0.85rem;
+    margin: 0;
+    
+    a {
+      color: #14344C;
+      text-decoration: none;
+      font-weight: 500;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .login-container {
+      padding: 15px; // Mobile container padding
+    }
+    .login-card {
+      padding: 1.5rem;
+    }
+    
+    .app-title {
+      font-size: 1.75rem;
+    }
+  }

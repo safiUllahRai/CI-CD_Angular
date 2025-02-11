@@ -1,0 +1,52 @@
+<div style="padding: 1rem;">
+    <form [formGroup]="requestForm" (ngSubmit)="onSubmit()" fxLayout="row" fxLayoutAlign="center">
+        <mat-card fxFlex.lt-md="100%" fxFlex.gt-sm="50%" style="padding: 1rem;">
+            <mat-card-header>
+                <mat-card-title><span class="mat-headline">New Request</span></mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+                <div fxLayout="column" >
+                    <mat-form-field>
+                        <mat-label>Request Type</mat-label>
+                        <mat-select (selectionChange)="requestTypeSelected($event)" formControlName="type">
+                            <mat-option *ngFor="let t of requestTypes" [value]="t.requestTypeId">{{t.requestType}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Request Reason</mat-label>
+                        <mat-select formControlName="reason">
+                            <mat-option *ngFor="let r of applicableReasons" [value]="r">{{r}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input matInput [matDatepicker]="startPicker" placeholder="Start Date" formControlName="startDate" [min]="minDate.toISOString().split('T')[0]">
+                        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #startPicker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field  >
+                        <input matInput [matDatepicker]="endPicker" placeholder="End Date" formControlName="endDate" [(min)]="requestForm?.get('startDate').value">
+                        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                        <mat-datepicker #endPicker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-select placeholder="Project Manager" formControlName="managerEmail" multiple>
+                          <mat-option *ngFor="let i of productManager" [value]="i.email">
+                            {{ i.name }}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    
+                    <mat-form-field>
+                        <textarea matInput placeholder="Comments"   ngModel maxlength="150" formControlName="comments"></textarea>
+                    </mat-form-field>
+                </div>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button type="button" mat-button routerLink="/">Cancel</button>
+                <button type="submit" mat-raised-button color="primary">Submit</button>
+            </mat-card-actions>
+        </mat-card>
+    </form>
+</div>

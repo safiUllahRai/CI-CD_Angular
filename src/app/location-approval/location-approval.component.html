@@ -1,0 +1,23 @@
+<div style="padding: 1rem; margin: 1rem;">
+<form [formGroup]="remoteLocationForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content fxLayout="column">
+    <h1 mat-dialog-title> <p>Check In Location</p> </h1>
+    <label id="example-radio-group-label"><b>Where are you checking in from?</b></label>
+  <mat-radio-group formControlName="locationType" aria-labelledby="example-radio-group-label" class="example-radio-group">
+    <!-- <mat-radio-button  value="Remote COVID19">Remote Work Due To Covid-19</mat-radio-button> -->
+    <mat-radio-button  value="Home">Working From Home</mat-radio-button>
+    <mat-radio-button  value="Client Visit">Client Visit</mat-radio-button>
+    <!-- <mat-radio-button  value="Office">Office</mat-radio-button> -->
+
+
+  </mat-radio-group>
+  <mat-form-field >
+      <textarea matInput placeholder="Remarks" formControlName="remarks" maxlength="250" placeholder="Remarks"></textarea>
+  </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end">
+      <button type="button" mat-button [mat-dialog-close]>Cancel</button>
+      <button mat-button mat-raised-button color="primary" type="submit"  cdkFocusInitial>Submit</button>
+  </div>
+</form>
+</div>

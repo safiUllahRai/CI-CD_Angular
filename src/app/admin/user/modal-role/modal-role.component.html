@@ -1,0 +1,39 @@
+<div fxLayout="row" fxLayoutAlign="center" fxFlex>
+  <div fxLayout="column" fxLayoutGap="2em">
+    <h3>Select Role</h3>
+    <kendo-grid
+      [data]="gridData"
+      [pageSize]="state.take"
+      [skip]="state.skip"
+      [pageable]="true"
+      filterable="menu"
+      [sortable]="true"
+      [height]="300"
+      [selectable]="selectableSettings"
+      [selectedKeys]="mySelection"
+      [kendoGridSelectBy]="'id'"
+      (dataStateChange)="dataStateChange($event)"
+    >
+      <kendo-grid-checkbox-column
+        showSelectAll="true"
+      ></kendo-grid-checkbox-column>
+      <kendo-grid-column
+        field="id"
+        title="ID"
+        [width]="100"
+        [filterable]="false"
+      ></kendo-grid-column>
+      <kendo-grid-column
+        field="name"
+        title="Name"
+        [width]="200"
+      ></kendo-grid-column>
+    </kendo-grid>
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end">
+      <button mat-raised-button (click)="onCancel()">Cancel</button>
+      <button mat-raised-button (click)="onSubmit()" color="primary">
+        Select
+      </button>
+    </div>
+  </div>
+</div>

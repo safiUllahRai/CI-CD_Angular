@@ -1,0 +1,150 @@
+<!-- <div fxLayout="column">
+    <form [formGroup]="attendanceFormGroup" (ngSubmit)="submit()" fxLayoutAlign="center">
+      <mat-card style="width: 90vh">
+        <mat-card-header fxLayout="column">
+          <div>
+            <span class="mat-title">
+              {{__FORM_TITLE}}
+            </span>
+            <br />
+          </div>
+        </mat-card-header>
+        <mat-card-content fxLayout="column">
+          <div fxLayout="column" fxLayoutGap="1em">
+
+            <mat-form-field class="full-width">
+                <mat-select placeholder="Office Location" formControlName="officeLocation">
+                    <mat-option *ngFor="let i of officeLocations" [value]="i.value">
+                      {{ i.viewValue }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="attendanceFormGroup.controls.officeLocation.hasError('required')">
+                    <strong>Office Location is Mandatory</strong>
+                  </mat-error>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <mat-select placeholder="Reasons for Missed Attendance" formControlName="reason">
+                    <mat-option *ngFor="let i of missedAttendanceResons" [value]="i.value">
+                      {{ i.viewValue }}
+                    </mat-option>
+                  </mat-select>
+                  <mat-error *ngIf="attendanceFormGroup.controls.reason.hasError('required')">
+                    <strong>Reason is Mandatory</strong>
+                  </mat-error>
+            </mat-form-field>
+            <mat-form-field *ngIf="attendanceFormGroup.get('officeLocation').value === 'Remote'">
+                <input matInput placeholder="Client Location In case of Remote" formControlName="clientLocation">
+            </mat-form-field>
+        
+            <mat-form-field>
+                <input matInput [matDatepicker]="startPicker" placeholder="Date" formControlName="date" >
+                <mat-error *ngIf="attendanceFormGroup.controls.date.hasError('required')">
+                  <strong>Please Select a Valid Date</strong>
+                </mat-error>
+                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Time In" type="time" formControlName="checkIn" >
+                <mat-error *ngIf="attendanceFormGroup.controls.checkIn.hasError('required')">
+                  <strong>Please Select a Valid Date and Time</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Time Out" type="time" formControlName="checkOut" >
+                <mat-error *ngIf="attendanceFormGroup.controls.checkOut.hasError('required')">
+                  <strong>Please Select a Valid Date and Time</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <input matInput placeholder="Comments"  formControlName="comments">
+            </mat-form-field>
+            <div class="form-group">
+                <label for="file">Choose File</label>
+                <input type="file"
+                       id="file"
+                       (change)="handleFileInput($event.target.files)">
+            </div>
+          </div>
+       
+  
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button type="submit" mat-raised-button color="primary" matTooltip="Submit">
+            Submit
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div> -->
+
+
+
+  <div fxLayout="column">
+    <form [formGroup]="attendanceFormGroup" (ngSubmit)="submit()" fxLayoutAlign="center">
+      <mat-card style="width: 90vh">
+        <mat-card-header fxLayout="column">
+          <div>
+            <span class="mat-title">
+              {{__FORM_TITLE}}
+            </span>
+            <br />
+          </div>
+        </mat-card-header>
+        <mat-card-content fxLayout="column">
+          <div fxLayout="column" fxLayoutGap="1em">
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Office Location" formControlName="officeLocation" required>
+                <mat-option *ngFor="let i of officeLocations" [value]="i.value">
+                  {{ i.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-select placeholder="Reasons for Missed Attendance" formControlName="reason" required>
+                <mat-option *ngFor="let i of missedAttendanceResons" [value]="i.value">
+                  {{ i.viewValue }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field *ngIf="attendanceFormGroup.get('officeLocation').value === 'Remote'">
+              <input matInput placeholder="Client Location In case of Remote" formControlName="clientLocation" required>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput [matDatepicker]="startPicker" placeholder="Date" formControlName="date" required>
+              <mat-error *ngIf="attendanceFormGroup.controls.date.invalid">
+                <strong>Please Select a Valid Date</strong>
+              </mat-error>
+              <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+              <mat-datepicker #startPicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Time In" type="time" formControlName="checkIn" required>
+              <mat-error *ngIf="attendanceFormGroup.controls.checkIn.invalid">
+                <strong>Please Select a Valid Date and Time</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Time Out" type="time" formControlName="checkOut" required>
+              <mat-error *ngIf="attendanceFormGroup.controls.checkOut.invalid">
+                <strong>Please Select a Valid Date and Time</strong>
+              </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Comments" formControlName="comments">
+            </mat-form-field>
+            <div class="form-group">
+              <label for="file">Choose File</label>
+              <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button type="submit" mat-raised-button color="primary" matTooltip="Submit" [disabled]="attendanceFormGroup.invalid || attendanceFormGroup.pristine">
+            Submit
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+  

@@ -1,0 +1,25 @@
+
+<div class="site-wrapper">
+  <mat-toolbar class="toolbar">
+      <button mat-button class="docs-button">
+          <img class="docs-angular-logo" src="./assets/logo.png" routerLink="/" alt="tmc">
+      </button>
+      <span class="flex-spacer"></span>
+      <button mat-icon-button class="logout-button" *ngIf="loggedinUser" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+      </button>
+  </mat-toolbar>
+  <div class="site-content">
+      <app-loader></app-loader>
+      <router-outlet></router-outlet>
+  </div>
+  <footer class="footer">
+      <div fxLayout="row" fxLayoutAlign="center">
+          <span class="copyright">Copyright &copy; TMC {{anio}} </span>
+      </div>
+  </footer>
+</div>
+
+
+
+

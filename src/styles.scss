@@ -1,0 +1,29 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.home{
+    .mat-card {
+        background: #14344C!important;
+        color: #fff;
+    }
+
+    .mat-card-subtitle{
+        color: #ffff;
+    }
+}
+
+
+
+.mat-drawer-inner-container{
+    min-width: 310px;
+  }
+
+  .mat-drawer-container{
+    background-color: transparent !important;
+  }
+
+  .row {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+}
+

@@ -1,0 +1,90 @@
+<div class="container form" fxLayout="row">
+
+  <div fxLayout="row" fxFlexFill fxLayoutGap="10px">
+
+    <div fxFlex="5" fxLayout="column" fxLayoutAlign="start center">
+      <button mat-mini-fab color="primary" matTooltip="Create" (click)="submit()">
+        <mat-icon>check</mat-icon>
+      </button>
+      <br>
+      <button mat-mini-fab color="default" matTooltip="Cancel" routerLink="{{__PAGE_ROUTE}}">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <mat-card fxLayout="column" fxLayoutAlign="center">
+
+      <mat-card-title-group>
+        <mat-card-title>{{__PAGE_TITLE}}</mat-card-title>
+      </mat-card-title-group>
+
+      <mat-card-content>
+
+        <div fxFlexFill fxlayout="column">
+          <div style="margin: 1rem;">
+            <b> Name: </b> {{_user.name}}<br>
+            <b>Username</b> {{_user.username}}<br>
+            <mat-form-field style="width:100%">
+              <input matInput placeholder="Email" disabled value="{{ employee?.email}}" />
+              <span style="cursor:pointer" matSuffix (click)="onSelectEmployee()">
+                <i class="material-icons">
+                  tab
+                  </i>
+              </span>
+    
+            </mat-form-field>
+            <!-- <b>Email</b> {{_user.email}} -->
+          </div>
+
+          <div>
+            <form class="form" fxLayout="column" fxFill fxLayoutGap="10px" [formGroup]="UserForm">
+
+              <div>
+                <mat-slide-toggle formControlName="enabled" color="primary">
+                  {{UserForm.controls.enabled.value ? 'Enabled' : 'Disabled'}}
+                </mat-slide-toggle>
+              </div>
+              <div>
+                <mat-slide-toggle formControlName="accountNonLocked" color="primary">
+                  <!-- User {{}/} Locked -->
+                  Account {{UserForm.controls.accountNonLocked.value ? '' : 'Not'}} Locked
+                </mat-slide-toggle>
+              </div>
+              <div>
+
+                <mat-slide-toggle formControlName="credentialsNonExpired" color="primary">
+                  Credentials {{UserForm.controls.credentialsNonExpired.value ? '' : 'Not'}} Expired
+                </mat-slide-toggle>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+    <mat-card fxFlex="50" fxLayout="column">
+
+      <mat-card-header fxFlex="10">
+        <mat-card-title>Roles</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content fxFlex="80">
+
+          <div fxFlexFill fxlayout="column">
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+            [(ngModel)]="roleID">
+              <mat-radio-button class="example-radio-button" [value]="1"> Administrator</mat-radio-button>
+              <mat-radio-button class="example-radio-button" [value]="2"> Manager</mat-radio-button>
+              <mat-radio-button class="example-radio-button" [value]="3"> User</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+
+
+
+      </mat-card-content>
+    </mat-card>
+
+
+  </div>
+</div>

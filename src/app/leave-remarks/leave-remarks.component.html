@@ -1,0 +1,12 @@
+<form [formGroup]="leaveRemarksForm" (ngSubmit)="onSubmit()">
+  <h1 mat-dialog-title>Remarks</h1>
+  <div mat-dialog-content fxLayout="column">
+    <mat-form-field >
+      <textarea matInput placeholder="Remarks" formControlName="remarks" placeholder="Remarks"></textarea>
+  </mat-form-field>
+  </div>
+  <div mat-dialog-actions align="end">
+      <button type="button" mat-button [mat-dialog-close]>Cancel</button>
+      <button mat-button mat-raised-button color="primary" type="submit"  cdkFocusInitial>Submit</button>
+  </div>
+</form>

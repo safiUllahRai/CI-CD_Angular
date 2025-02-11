@@ -1,0 +1,52 @@
+
+
+    <mat-progress-bar *ngIf="!stopSpiner" mode="indeterminate"></mat-progress-bar>
+
+<div  fxLayout="row" fxLayoutAlign="center"  >
+    <mat-card >
+        <div fxLayout="row" fxLayoutAlign="space-between stretch">
+            <div>
+                <span class="mat-title">{{__PAGE_TITLE}}</span>
+            </div>
+            <!-- <button routerLink="/employees/create" mat-button color="primary">
+              <span class="material-icons">
+                add
+                </span> New
+            </button> -->
+        </div>
+        <mat-card-content fxLayout="column" fxLayoutGap="2em">
+            <kendo-grid [data]="gridData" [pageSize]="state.take" [skip]="state.skip" [pageable]="true"
+                filterable="menu" [sortable]="true" (dataStateChange)="dataStateChange($event)">
+                <kendo-grid-column  field="id" title="ID" [width]="50" [filterable]="false"></kendo-grid-column>
+                <kendo-grid-column field="fullName" title="Name" [width]="150"></kendo-grid-column>
+                <!-- <kendo-grid-column field="fatherName" title="Father Name" [width]="100"></kendo-grid-column> -->
+                <kendo-grid-column field="email" title="Email" [width]="200"></kendo-grid-column>
+                <kendo-grid-column field="contactNo" title="Contact No." [width]="120"></kendo-grid-column>
+                <kendo-grid-column field="departmentName" title="Department" [width]="120"></kendo-grid-column>
+                <kendo-grid-column field="designationName" title="Designation" [width]="120"></kendo-grid-column>
+                <kendo-grid-column field="managerName" title="Manager" [width]="120"></kendo-grid-column>
+                <kendo-grid-column title="Status" [width]="150">
+                  <ng-template kendoGridCellTemplate let-dataItem>
+                    <input
+                      type="checkbox"
+                      class="k-checkbox"
+                      [checked]="dataItem.enabled"
+                      id="ch1"
+                      disabled
+                    />
+                    <label class="k-checkbox-label" for="ch1"></label>
+                  </ng-template>
+                </kendo-grid-column>
+                <kendo-grid-column filterable="false" [width]="50">
+                    <ng-template kendoGridCellTemplate let-dataItem >
+                        <button mat-icon-button routerLink="{{__PAGE_ROUTE}}edit/{{dataItem.id}}">
+                          <span class="material-icons">
+                            edit
+                            </span>
+                        </button>
+                    </ng-template>
+                </kendo-grid-column>
+            </kendo-grid>
+        </mat-card-content>
+    </mat-card>
+</div>

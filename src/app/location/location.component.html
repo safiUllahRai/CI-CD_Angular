@@ -1,0 +1,14 @@
+<div style="padding: 1rem;">
+<div mat-dialog-content  >
+  <h1  mat-dialog-title>Check In</h1>
+    <div >
+        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+        </agm-map>
+    </div>
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button color="warn" [mat-dialog-close]>Cancel</button>
+    <button mat-button mat-raised-button color="primary" (click)="checkIn()" cdkFocusInitial>Check In</button>
+</div>
+</div>

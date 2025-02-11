@@ -1,0 +1,40 @@
+<mat-progress-bar *ngIf="!stopSpiner" mode="indeterminate"></mat-progress-bar>
+
+<div  fxLayout="row" fxLayoutAlign="center"  >
+    <mat-card >
+        <div fxLayout="row" fxLayoutAlign="space-between stretch">
+            <div>
+                <span class="mat-title">{{__PAGE_TITLE}}</span>
+            </div>
+            <!-- <button routerLink="/teamLogs" mat-button color="primary">
+              <span class="material-icons">
+                history
+                </span> Team Logs
+            </button> -->
+        </div>
+        <mat-card-content fxLayout="column" fxLayoutGap="2em">
+            <kendo-grid [data]="gridData" [pageSize]="state.take" [skip]="state.skip" [pageable]="true"
+                filterable="menu" [sortable]="true" (dataStateChange)="dataStateChange($event)">
+                <kendo-grid-column  field="userName" title="Name"></kendo-grid-column>
+                <kendo-grid-column field="userEmail" title="Email" ></kendo-grid-column>
+                <kendo-grid-column field="date" title="Date" [filterable]="false"></kendo-grid-column>
+                <kendo-grid-column field="checkIn" title="Check-In" [filterable]="false"></kendo-grid-column>
+                <kendo-grid-column field="checkOut" title="Check-Out" [filterable]="false"></kendo-grid-column>
+                <kendo-grid-column title="Is-Missing">
+                    <ng-template kendoGridCellTemplate let-dataItem>
+                      <input
+                        type="checkbox"
+                        class="k-checkbox"
+                        [checked]="dataItem.isMissing === 1"
+                        id="ch1"
+                        disabled
+                      />
+                      <label class="k-checkbox-label" for="ch1"></label>
+                    </ng-template>
+                  </kendo-grid-column>
+              </kendo-grid>
+           
+        </mat-card-content>
+    </mat-card>
+</div>
+

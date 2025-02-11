@@ -1,0 +1,79 @@
+
+ <div class="site-wrapper">
+  <mat-toolbar class="toolbar">
+    <div fxShow="true" fxHide.gt-sm="true">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu" >
+        <div>
+          <div *ngIf="user" style="padding: 1rem;">
+            <b>Name:</b> {{user.name}} <br>
+            <b>Department:</b> {{user.department}} <br>
+            <b>Designation:</b> {{user.designation}} <br>
+            <b>Roles:</b> {{user.roles}}
+          </div>
+
+        </div>
+        <button mat-menu-item *ngIf="user" routerLink="/">
+          <mat-icon>home</mat-icon> Home
+        </button>
+        <button mat-menu-item *ngIf="user" routerLink="/new">
+          <mat-icon>edit</mat-icon> New Request
+        </button>
+        <button mat-menu-item *ngIf="user" routerLink="/leaveapproval">
+          <mat-icon>touch_app</mat-icon> Pending Approvals
+        </button>
+        <button mat-menu-item *ngIf="user" routerLink="/designations">
+          <mat-icon>list</mat-icon> Designations
+        </button>
+        <button mat-menu-item *ngIf="user" routerLink="/employees">
+          <mat-icon>list</mat-icon> Employee
+        </button>
+        <button mat-menu-item *ngIf="user" routerLink="/departments">
+          <mat-icon>list</mat-icon> Department
+        </button>
+        <button mat-menu-item *ngIf="user" routerLink="/user">
+          <mat-icon>list</mat-icon> User
+        </button>
+        <button mat-menu-item *ngIf="user" routerLink="/all">
+          <mat-icon>list</mat-icon> View History
+        </button>
+        <button mat-menu-item *ngIf="user" routerLink="/log">
+          <mat-icon>history</mat-icon> Time  Logs
+        </button>
+        <button mat-menu-item *ngIf="user" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Log out</span>
+        </button>
+      </mat-menu>
+    </div>
+
+    <button mat-button class="docs-button">
+      <img class="docs-angular-logo" src="../../../../assets/logo.svg" alt="tmc">
+    </button>
+    <span class="flex-spacer"></span>
+    <div fxShow="true" fxHide.lt-md="true">
+      <div class="flex-spacer"></div>
+      <button class="header-button" mat-button *ngIf="user" routerLink="/new">New Request</button>
+      <button class="header-button" mat-button *ngIf="user" routerLink="/all">View History</button>
+      <button class="header-button" mat-button *ngIf="user" routerLink="/designations">Designation</button>
+      <button class="header-button" mat-button *ngIf="user" routerLink="/employees">Employee</button>
+      <button class="header-button" mat-button *ngIf="user" routerLink="/departments">Department</button>
+      <button class="header-button" mat-button *ngIf="user" routerLink="/user">User</button>
+      <button class="header-button" mat-button *ngIf="user" routerLink="/log">Time Logs</button>
+      <button class="header-button" mat-button *ngIf="user" routerLink="/leaveapproval">Pending Approvals</button>
+      <button mat-button *ngIf="user" (click)="logout()">Log out</button>
+    </div>
+
+  </mat-toolbar>
+  <div class="site-content">
+      <router-outlet></router-outlet>
+    </div>
+  <footer class="footer">
+    <div fxLayout="row" fxLayoutAlign="center">
+      <span class="copyright">Copyright &copy; Tallymarks Consulting</span>
+    </div>
+  </footer>
+</div>
+

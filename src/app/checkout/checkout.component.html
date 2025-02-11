@@ -1,0 +1,19 @@
+<div style="padding: 1rem;">
+
+<div mat-dialog-content>
+  <h1 mat-dialog-title>Check Out</h1>
+    <div fxLayout="column">
+        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+        </agm-map>
+        <mat-form-field style="margin-top:1em;">
+            <input maxlength="250" matInput placeholder="Remarks" [(ngModel)]="remarks">
+        </mat-form-field>
+    </div>
+
+</div>
+<div mat-dialog-actions align="end">
+    <button mat-button color="warn" [mat-dialog-close]>Cancel</button>
+    <button mat-button mat-raised-button color="primary" (click)="checkOut()" cdkFocusInitial>Check Out</button>
+</div>
+</div>

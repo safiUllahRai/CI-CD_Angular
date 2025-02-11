@@ -1,0 +1,25 @@
+<div fxLayout="column" style= "margin-top: 3rem; padding: 1rem;">
+    <form [formGroup]="feedbackForm" (ngSubmit)="submitFeedBack()" fxLayoutAlign="center">
+      <mat-card style="width: 90vh">
+        <mat-card-content fxLayout="column">
+          <div fxLayout="column" fxLayoutGap="1em">
+          <mat-form-field>
+                <textarea matInput formControlName="feedback" rows="4" (input)="updateCharacterCount()" placeholder="Enter your feedback"
+        ></textarea>
+        <mat-hint align="end">{{ characterCount }}/250 characters</mat-hint>
+            </mat-form-field>
+            </div>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button type="submit"[disabled]="feedbackForm.invalid" mat-raised-button color="primary" matTooltip="Submit">
+            Submit
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </form>
+  </div>
+
+  
+
+
+

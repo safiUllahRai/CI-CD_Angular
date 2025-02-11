@@ -1,0 +1,20 @@
+<div fxLayout="column">
+  <h1 mat-dialog-title>Select Manager</h1>
+  <div mat-dialog-content>
+    <kendo-grid [data]="gridData" [pageSize]="state.take" [skip]="state.skip" [pageable]="true" filterable="menu"
+      [sortable]="true" (dataStateChange)="dataStateChange($event)" [selectable]="selectableSettings"
+      [navigable]="true"
+      [kendoGridSelectBy]="'id'"
+      [selectedKeys]="selectedEmployeeKey">
+      <kendo-grid-checkbox-column [width]="30"></kendo-grid-checkbox-column>
+      <kendo-grid-column [filterable]="false" field="id" title="ID" [width]="50"></kendo-grid-column>
+      <kendo-grid-column  field="firstName" title="Name" [width]="100"></kendo-grid-column>
+      <kendo-grid-column field="departmentName" title="Department" [width]="100"></kendo-grid-column>
+    </kendo-grid>
+  </div>
+  <mat-error *ngIf="message">{{message}}</mat-error>
+  <div mat-dialog-actions align="end">
+    <button mat-button  (click)="onCancel()">Cancel</button>
+    <button mat-raised-button color="primary" cdkFocusInitial (click)="selectClicked()">Select</button>
+  </div>
+</div>

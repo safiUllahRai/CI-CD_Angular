@@ -1,0 +1,40 @@
+<div fxLayout="row " fxLayoutAlign="center">
+  <mat-card fxFlex="40" fxFlex.xs="90" fxFlex.sm="90">
+    <mat-card-header>
+      <h2>Create User</h2>
+    </mat-card-header>
+    <mat-card-content fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="start">
+      <br />
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutAlign="space-between">
+        <!-- <mat-form-field style="width:100%">
+          <input matInput placeholder="Username" [(ngModel)]="username" />
+        </mat-form-field> -->
+        <mat-form-field style="width:100%">
+          <input matInput placeholder="Employee" disabled value="{{ employee?.fullName }}" />
+          <span style="cursor:pointer" matSuffix (click)="onSelectEmployee()">
+            <i class="material-icons">
+              tab
+              </i>
+          </span>
+
+        </mat-form-field>
+      </div>
+      <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="start start">
+        <div fxLayout="row">
+          <button mat-button color="primary" (click)="onSelectRole()">
+            Select Role
+          </button>
+          <mat-chip-list>
+            <mat-chip *ngFor="let r of roles">{{ r.name }}</mat-chip>
+          </mat-chip-list>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end">
+        <button mat-raised-button routerLink="/user/">Cancel</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">
+          Submit
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

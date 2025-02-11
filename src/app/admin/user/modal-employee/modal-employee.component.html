@@ -1,0 +1,47 @@
+<div fxLayout="row" fxLayoutAlign="center" fxFlex>
+  <div fxLayout="column" fxLayoutGap="2em">
+    <h3>Select Employee</h3>
+    <kendo-grid
+      [data]="gridData"
+      [pageSize]="state.take"
+      [skip]="state.skip"
+      [pageable]="true"
+      filterable="menu"
+      [sortable]="true"
+      [height]="300"
+      [selectable]="selectableSettings"
+      [selectedKeys]="mySelection"
+      [kendoGridSelectBy]="'id'"
+      (dataStateChange)="dataStateChange($event)"
+    >
+      <kendo-grid-checkbox-column
+        showSelectAll="true"
+      ></kendo-grid-checkbox-column>
+      <kendo-grid-column
+        field="fullName"
+        title="Name"
+      ></kendo-grid-column>
+      <kendo-grid-column
+      field="email"
+      title="Email"
+      [width]="200"
+    ></kendo-grid-column>
+    <kendo-grid-column
+    field="personalNo"
+    title="Personal Number"
+    [width]="150"
+  ></kendo-grid-column>
+      <kendo-grid-column
+      field="departmentName"
+      title="Department"
+    ></kendo-grid-column>
+    <!-- <kendo-grid-filter-menu-operators [operators]="customOperators"></kendo-grid-filter-menu-operators> -->
+    </kendo-grid>
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="end">
+      <button mat-raised-button (click)="onCancel()">Cancel</button>
+      <button mat-raised-button (click)="onSubmit()" color="primary">
+        Select
+      </button>
+    </div>
+  </div>
+</div>

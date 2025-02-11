@@ -1,0 +1,30 @@
+<mat-progress-bar *ngIf= "!stopSpinner"  mode="indeterminate"></mat-progress-bar>
+      <div  fxLayout="row" fxLayoutAlign="center"  >
+          <mat-card >
+            <div fxLayout="row" fxLayoutAlign="space-between end"> <!-- Updated alignment here -->
+              <div></div> <!-- Empty div to push button to the right -->
+              <button routerLink="/allTimeLogs" mat-button color="primary" *ngIf="loggedInUser.roles[0] === 'Admin' ">
+                <span class="material-icons">history</span> All Time Logs
+              </button>
+            </div>
+              <mat-card-content fxLayout="column" fxLayoutGap="2em">
+                  <kendo-grid [data]="gridData" [pageSize]="state.take" [skip]="state.skip" [pageable]="true"
+                      filterable="menu" [sortable]="true" (dataStateChange)="dataStateChange($event)">
+                      <kendo-grid-column  field="name" title="Name"></kendo-grid-column>
+                      <kendo-grid-column field="requestType" title="Request Type" [filterable]="false"></kendo-grid-column>
+                      <kendo-grid-column field="reason" title="Reason" [filterable]="false"></kendo-grid-column>
+                      <kendo-grid-column field="submissionDate" title="Submission Date" [filterable]="false"></kendo-grid-column>
+                      <kendo-grid-column field="startDate" title="Start Date" [filterable]="false"></kendo-grid-column>
+                      <kendo-grid-column field="pm_email" title="P.M" [filterable]="false"></kendo-grid-column>
+                      <kendo-grid-column field="remarks" title="Remarks" [filterable]="false"></kendo-grid-column>
+                      <kendo-grid-column title="Actions" [width]="150" [filterable]="false">
+                        <ng-template kendoGridCellTemplate let-dataItem>
+                            <button  (click)="approvalStatus(dataItem.id)" mat-raised-button color="primary">Approve</button>
+                            <button (click)="approvalStatusReject(dataItem.id)" style="margin: 0.5rem;" mat-raised-button color="warn">Reject</button>
+                        </ng-template>
+                    </kendo-grid-column>
+                    </kendo-grid>
+                 
+              </mat-card-content>
+          </mat-card>
+      </div>
