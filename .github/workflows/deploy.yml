@@ -13,16 +13,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js (for Angular)
         uses: actions/setup-node@v4
         with:
-          node-version: 11  # Adjust based on your Angular version
+          node-version: 11  # Keep Node 11 for Angular build
 
       - name: Install Dependencies
         run: npm install  # Ensures a clean installation of dependencies
 
       - name: Build Angular App
         run: npm run build # Production build
+
+      - name: Setup Node.js (for Firebase Deployment)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20  # Switch to Node 20 for Firebase deployment
 
       - name: Deploy to Firebase
         uses: FirebaseExtended/action-hosting-deploy@v0
