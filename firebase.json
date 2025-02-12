@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/tmc-attendance-web-ng",
+    "public": "dist/TMC-Attendance-Web-NG",
     "ignore": [
       "firebase.json",
       "**/.*",
